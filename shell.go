@@ -9,6 +9,7 @@ const (
 	nushell    = "nu"
 	powershell = "powershell"
 	pwsh       = "pwsh"
+	xonsh      = "xonsh"
 	zsh        = "zsh"
 )
 
@@ -67,5 +68,8 @@ var Shells = map[string]Shell{
 	},
 	elvish: {
 		Command: []string{"elvish", "-c", `use os; var rc = (os:temp-file 'vhs-'); try { echo 'set edit:prompt = { styled "> " "#5B56E0" };set edit:rprompt = { }' > $rc; elvish -rc $rc[name] } finally { os:remove $rc[name] }`},
+	},
+	xonsh: {
+		Command: []string{"xonsh", "--no-rc", "-D", "PROMPT=\033[;38;2;91;86;224m>\033[m "},
 	},
 }
